@@ -1,0 +1,703 @@
+<h1>Kotlin Basic Concepts</h1>
+
+<h2>Course Outline</h2>
+<ol>
+    <li><a href="#variableIAR">Variable Initialize , Assign, Re-assign</a></li>
+    <li><a href="#ktoperators">Operators</a></li>
+    <li><a href="#concatinter">Concatination & Interpolation</a></li>
+    <li><a href="#valvsvar">Val vs Var</a></li>
+    <li><a href="#condistatement">Conditional Statement</a></li>
+    <li><a href="#readUserInput">Read User input</a></li>
+    <li><a href="#ktarray">Kotlin Array</a></li>
+    <li><a href="#ktLooping">Looping</a></li>
+    <li><a href="#listinkt">List</a></li>
+    <li><a href="#mapkt">Map</a></li>
+    <li><a href="#simplefunction">Simplest Function</a></li>
+</ol>
+
+<div id="variableIAR" class="groupy">
+    <h2>Variable Initialize , Assign, Re-assign</h2>
+
+    <pre>
+        <code class="java">
+            var age = 32 // initialize => type referred
+
+            var author: String // decalear
+            author = "Waiferkolar" // assign
+
+            var salary: Int
+            salary = 3000000 // assign
+            salary = 400000 // reassign
+            println(author)
+            println(age + salary)
+        </code>
+    </pre>
+</div>
+
+<div id="ktoperators" class="groupy">
+
+    <h2>Operators</h2>
+
+    <pre>
+        <code class="java">
+            val apples: Int = 6
+            val oranges: Int = 5
+            val price: Double = 2.2  // Double Natural
+            var fruit: Int = apples + oranges
+            var value: Double = apples / price
+            value = apples * price
+            value = apples - price
+            println(fruit)
+        </code>
+    </pre>
+</div>
+
+<div id="concatinter" class="groupy">
+    <h2>Concatination & Interpolation</h2>
+    <pre>
+        <code class="java">
+            val author: String = "Waiferkolar"
+            var age: Int = 33
+            println(age + " My Name is " + author + " and my age is " + age) // Error
+            println("My Name is " + author + " and my age is " + age)
+            println("My Name is  $author" + " and my age is $age") // Interpolaction
+            println("My Name is  \$author" + " and my age is $age") // Escaping
+            </code>
+    </pre>
+</div>
+
+<div id="valvsvar" class="groupy">
+    <h2>Val vs Var</h2>
+
+    <pre>
+        <code class="java">
+            val => value => immutable
+            var => variable => mutable
+
+            val bother: String = "DDG"
+            var author: String = "DDG"
+            author = "Waiferkolar"
+            bother = "writer"
+
+            println(author)
+            </code>
+    </pre>
+</div>
+
+<div id="condistatement" class="groupy">
+    <h2>Conditional Statement</h2>
+
+    <pre>
+        <code class="java">
+            val age = 3 // No need Int type cause we assign value 3 , kotlin will referred type
+            val lives = 1 // expression
+            var isGameOver = (age < 1)
+            if (isGameOver) {  // block
+                println("Game Over") // statement
+            } else if (!isGameOver) {
+                println("Game On!")
+            } else {
+                println("Game On!")
+            }
+            </code>
+    </pre>
+
+    <h2>Function Communication</h2>
+    <pre>
+        <code>
+        fun checkIt(): String {
+            val age = 30
+            var msg: String
+
+            return if (age == 30) "TRUE" else "FALSE"
+        }
+        </code>
+    </pre>
+</div>
+
+<div id="readUserInput" class="groupy">
+    <h2>Read User input</h2>
+
+    <pre>
+        <code class="java">
+            fun main(args: Array<String>) {
+                val age = readLine()!!.toInt()
+                println("age is $age")
+
+                val message: String
+                if(age < 18) {
+                    message = "You're too young to vote!"
+                } else if (age == 100) {
+                    message = "congratulation"
+                } else {
+                    message = "you can vote";
+                }
+                println(message)
+            }
+
+            fun main(args: Array<String>) {
+                val age = readLine()!!.toInt()
+                println("age is $age")
+
+                val message: String
+                message = when {
+                    age < 18 -> "You're too young to vote!"
+                    age == 100 -> "congratulation"
+                    else -> "you can vote"
+                }
+                println(message)
+            }
+            </code>
+    </pre>
+</div>
+
+<div id="ktarray" class="groupy">
+    <h2>Kotlin Array</h2>
+    <pre>
+        <code>
+            fun main(args: Array<String>) {
+                println("Your name is ${args[0]}")
+                var students = arrayOf("Mg Mg","Aung Aung","Tun Tun","Su Su")
+
+                for(i in 0 until students.size){
+                    println(students[i])
+                }
+            }
+        </code>
+    </pre>
+</div>
+
+<div id="ktLooping" class="groupy">
+    <h2>Looping</h2>
+
+    <pre>
+        <code>
+            for(i in 1..10){
+                println(i)
+            }
+
+            for(i in 1..10){
+                println("$i squared is ${i * i}")
+            }
+
+            for(i in 1 until 10){
+                println("$i squared is ${i * i}")
+            }
+
+            for(i in 10 downTo  0){
+                println("$i squared is ${i * i}")
+            }
+
+            for(i in 10 downTo  0 step 2){
+                println("$i squared is ${i * i}")
+            }
+        </code>
+    </pre>
+</div>
+
+<div id="listinkt" class="groupy">
+    <h2>Kotlin List</h2>
+    <p>
+        Kotlin got mutable and immutable (read-only) lists. <br>
+        Read-only lists are created with listOf().<br>
+        mutable lists with mutableListOf().
+    </p>
+    <h2>The listOf() method creates a new read-only list in Kotlin.</h2>
+    <pre>
+        <code>
+            fun main() {
+                val words = listOf("pen", "cup", "dog", "spectacles")
+                println("The list contains ${words.size} elements.")
+            }
+
+            fun main() {
+                val nums = listOf(11, 5, 3, 8, 1, 9, 6, 2)
+
+                val len = nums.count()
+                val max = nums.max()
+                val min = nums.min()
+                val sum = nums.sum()
+                val avg = nums.average()
+
+                val msg = """
+                        max: $max, min: $min,
+                        count: $len, sum: $sum,
+                        average: $avg
+                        """
+                println(msg.trimIndent())
+
+            }
+        </code>
+    </pre>
+    <h2>Mutable List</h2>
+    <p>With mutableListOf(), we can create mutable lists in Kotlin. We can add new elements, delete elements, and modify
+        elements in mutable lists.</p>
+    <pre>
+            <code>
+            fun main() {
+
+                val nums = mutableListOf(3, 4, 5)
+
+                nums.add(6)
+                nums.add(7)
+                nums.addAll(listOf(8, 9, 10))
+                nums.add(0, 0)
+                nums.add(1, 1)
+                nums.add(2, 2)
+
+                println(nums)
+
+                nums.shuffle()
+
+                println(nums)
+
+                nums.sort()
+
+                println(nums)
+
+                nums.removeAt(0)
+                nums.remove(10)
+
+                println(nums)
+
+                nums.replaceAll { e -> e * 2 }
+
+                println(nums)
+
+                nums.retainAll(listOf(12, 14, 16, 18))
+
+                println(nums)
+
+                nums.fill(0)
+
+                println(nums)
+
+                nums.set(0, 22)
+                println(nums[0])
+
+                nums.clear()
+
+                if (nums.isEmpty()) println("The list is empty")
+                else println("The list is not epty")
+            }
+            </code>
+    </pre>
+    <h2>List Indexing</h2>
+    <p>
+        Each element of a list has an index. Kotlin list indexes start from zero. The last element has len-1 index.
+    </p>
+    <pre>
+            <code>
+            fun main() {
+
+                val words = listOf("pen", "cup", "dog", "person",
+                        "cement", "coal", "spectacles", "cup", "bread")
+
+                val w1 = words.get(0)
+                println(w1)
+
+                val w2 = words[0]
+                println(w2)
+
+                val i1 = words.indexOf("cup")
+                println("The first index of cup is $i1")
+
+                val i2 = words.lastIndexOf("cup")
+                println("The last index of cup is $i2")
+
+                val i3 = words.lastIndex
+                println("The last index of the list is $i3")
+
+                val len = nums.count() // get list count
+                println("There are $len elements")
+
+                val size = nums.size // get list size
+                println("The size of the list is $size")
+
+                val n1 = nums.count { e -> e < 0 } // Get Negative Value
+                println("There are $n1 negative values")
+
+                val n2 = nums.count { e -> e % 2 == 0 } // Get Even Number
+                println("There are $n2 even values")
+
+                val w1 = words.first() // get First
+                println(w1)
+
+                val w2 = words.last() // get Last
+                println(w2)
+
+                val w3 = words.findLast { w -> w.startsWith('c') } // get last start with c
+                println(w3)
+
+                val w4 = words.first { w -> w.startsWith('c') } get first start with c
+                println(w4)
+
+                if (r) println("The list contains 4")
+                else println("The list does not contain 4")
+                val r2 = nums.containsAll(listOf(1, -1))
+            </code>
+    </pre>
+    <h2>List Iteration</h2>
+    <p>List iteration or list looping is the process of going through the list elements one by one.</p>
+    <pre>
+            <code>
+            fun main() {
+
+                val words = listOf("pen", "cup", "dog", "person",
+                        "cement", "coal", "spectacles")
+
+                words.forEach { e -> print("$e ") }
+                println()
+
+                for (word in words) {
+
+                    print("$word ")
+                }
+
+                println()
+
+                for (i in 0 until words.size) {
+
+                    print("${words[i]} ")
+                }
+
+                println()
+
+                words.forEachIndexed({i, e -> println("words[$i] = $e")})
+
+                val it: ListIterator<String> = words.listIterator()
+
+                while (it.hasNext()) {
+
+                    val e = it.next()
+                    print("$e ")
+                }
+
+                println()
+            }
+            </code>
+    </pre>
+
+    <h2>List Sorting</h2>
+    <p>The following example shows how to sort List values in Kotlin. Since the lists created with listOf() are
+        read-only, the methods do not alter the list but return a new modified list.</p>
+    <pre>
+        <code>
+            fun main() {
+
+                val nums = listOf(11, 5, 3, 8, 1, 9, 6, 2)
+
+                val sortAsc = nums.sorted()
+                println(sortAsc)
+
+                val sortDesc = nums.sortedDescending()
+                println(sortDesc)
+
+                val revNums = nums.reversed()
+                println(revNums)
+
+                val cars = listOf(Car("Mazda", 6300), Car("Toyota", 12400),
+                        Car("Skoda", 5670), Car("Mercedes", 18600))
+
+                val res = cars.sortedBy { car -> car.name }
+                res.forEach { e -> println(e) }
+
+                println("*************")
+
+                val res2 = cars.sortedByDescending { car -> car.name }
+                res2.forEach { e -> println(e) }
+            }
+            data class Car(var name: String, var price: Int)
+        </code>
+    </pre>
+    <h2>List Slice</h2>
+    <p>A slice is a portion of a list. Slices can be created with the slice() method. The method takes indexes of the
+        elements to be picked up.</p>
+    <pre>
+            <code>
+            fun main() {
+
+                val nums = listOf(1, 2, 3, 4, 5, 6)
+
+                val nums2 = nums.slice(1..3)
+                println(nums2)
+
+                val nums3 = nums.slice(listOf(3, 4, 5))
+                println(nums3)
+            }
+            </code>
+    </pre>
+    <h2>List Maxium</h2>
+    <p>The following example deals with finding the maximum value of a list.</p>
+    <pre>
+            <code>
+            fun main() {
+
+                val nums = listOf(11, 5, 23, 8, 1, 9, 6, 2)
+
+                println(nums.max())
+
+                val cars = listOf(Car("Mazda", 6300), Car("Toyota", 12400),
+                        Car("Skoda", 5670), Car("Mercedes", 18600))
+
+                val car = cars.maxBy { car -> car.price }
+                println("The max price is ${car?.price} of ${car?.name}")
+            }
+            data class Car(var name: String, var price: Int)
+            </code>
+    </pre>
+    <h2>List filter</h2>
+    <p>Filtering is an opertion where only elements that meet certain criteria pass through.</p>
+    <pre>
+            <code>
+            fun main(args: Array<String>) {
+
+                val words = listOf("pen", "cup", "dog", "person",
+                        "cement", "coal", "spectacles")
+
+                val words2 = words.filter { e -> e.length == 3 }
+                words2.forEach { e -> print("$e ") }
+
+                println()
+
+                val words3 = words.filterNot { e -> e.length == 3 }
+
+                words3.forEach { e -> print("$e ") }
+
+                println()
+
+                val cars = listOf(Car("Mazda", 6300), Car("Toyota", 12400),
+                        Car("Skoda", 5670), Car("Mercedes", 18600))
+
+                val res = cars.filter { car -> car.price > 10000 }
+                res.forEach { e -> println(e) }
+            }
+            data class Car(var name: String, var price: Int)
+            </code>
+    </pre>
+</div>
+<div id="mapkt" class="groupy">
+    <h2>Kotlin Map</h2>
+    <p>
+        A map is a collection that holds pairs of objects. Each pair consists of a key and a value. Map keys are unique;
+        the map holds only one value for each key.
+    </p>
+    <h2>Kotlin mapOf()</h2>
+    <p>The mapOf() method creates a read-only map with the specified contents, given as a list of pairs where the first
+        value is the key and the second is the value.</p>
+    <pre>
+            <code>
+            fun main() {
+
+                val chars = mapOf(97 to "a", 98 to "b", 120 to "x")
+                println(chars)
+
+                val user = mapOf("name" to "Luke", "age" to "23")
+                println(user)
+            }
+            </code>
+        </pre>
+    <h2>HashMap</h2>
+    <pre>
+            <code>
+            fun main() {
+
+                val items = HashMap<String, Int>()
+
+                items["A"] = 90
+                items["B"] = 80
+                items["C"] = 70
+
+                for ((k, v) in items) {
+                    println("$k = $v")
+                }
+
+                 val items = mapOf("coins" to 12, "books" to 45, "cups" to 33, "pens" to 2)
+
+                    println("Map has ${items.size} items")
+                    println("Map has ${items.count()} items")
+
+                    val n = items.count { it.value > 10 }
+                    println("# of values greater that 10: $n")
+            </code>
+        </pre>
+    <h2>Map entries, keys, values</h2>
+    <pre>
+                <code>
+                fun main() {
+
+                    val items = mapOf("coins" to 12, "books" to 45, "cups" to 33)
+
+                    println("Entries: " + items.entries)
+                    println("Keys:" + items.keys)
+                    println("Values:" + items.values)
+                }
+                </code>
+        </pre>
+    <h2>A mutable map is created with mutableMapOf().</h2>
+    <pre>
+                <code>
+                fun main() {
+
+                    val user = mutableMapOf("name" to "John Doe", "occupation" to "programmer")
+                    println(user)
+
+                //    user.put("location", "USA")
+                    user["location"] = "USA"
+                    println(user)
+
+                    user.remove("occupation")
+                    println(user)
+
+                    user.clear()
+                    println(user)
+
+                    if (user.isEmpty()) {
+                        println("empty")
+                    } else {
+                        println("not empty")
+                    }
+                }
+                </code>
+        </pre>
+    <h2>Kotlin get values</h2>
+    <pre>
+                <code>
+                fun main() {
+
+                    val items = mapOf("coins" to 12, "books" to 45, "cups" to 33, "pens" to 2)
+
+                //    println(items.get("coins"))
+                    println(items["coins"])
+
+                    println(items.getValue("coins"))
+
+                    println(items.getOrDefault("pens", 0))
+                    println(items.getOrDefault("pencils", 0))
+
+                    val nOfPencils = items.getOrElse("pencils", {
+                        0
+                    })
+
+                    println(nOfPencils)
+                }
+                </code>
+        </pre>
+    <h2>Kotlin contains key/value</h2>
+    <pre>
+                <code>
+                fun main() {
+
+                    val items = mapOf("coins" to 12, "books" to 45, "cups" to 33, "pens" to 2)
+
+                    if (items.containsKey("cups")) {
+
+                        println("contains cups")
+                    } else {
+
+                        println("does not contain cups")
+                    }
+
+                    val value = 25
+
+                    if (items.containsValue(value)) {
+
+                        println("contains value $value")
+                    } else {
+
+                        println("does not contain value $value")
+                    }
+                }
+                </code>
+        </pre>
+    <h2>Kotlin map forEach</h2>
+    <pre>
+            <code>
+            fun main() {
+
+                val items = mapOf("coins" to 12, "books" to 45, "cups" to 33, "pens" to 2)
+
+                items.forEach { (k, v) -> println("There are $v $k") }
+            }
+            </code>
+        </pre>
+    <h2>Kotlin filter map</h2>
+    <pre>
+            <code>
+            fun main() {
+
+                val items = mapOf("A" to 90, "B" to 80, "C" to 70, "D" to 60, "E" to 50)
+
+                val filtered = items.filterKeys { it == "A" || it == "C" }
+                println(filtered)
+
+                val filtered2 = items.filterValues { it >= 70 }
+                println(filtered2)
+
+                val filtered3 = items.filter { it.key == "A" || it.value == 50 }
+                println(filtered3)
+            }
+            </code>
+        </pre>
+    <h2>Kotlin sorted map</h2>
+    <pre>
+            <code>
+            fun main() {
+
+                val items = mapOf("coins" to 12, "books" to 45, "cups" to 33, "pens" to 2)
+                println(items)
+
+                val sortedItems = sortedMapOf("coins" to 12, "books" to 45, "cups" to 33, "pens" to 2)
+                println(sortedItems)
+            }
+            </code>
+        </pre>
+    <h2>Kotlin map any</h2>
+    <pre>
+        <code>
+        fun main() {
+
+            val items = mapOf("coins" to 12, "books" to 45, "cups" to 33, "pens" to 2)
+
+            val value = 12
+
+            val hasValue = items.any { it.value == value }
+
+            if (hasValue) {
+                println("The map has value $value")
+            } else {
+                println("The map does not have value $value")
+            }
+
+            val isEven: (Int) -> Boolean = { it % 2 == 0 }
+
+            val hasEvenValue = items.any { isEven(it.value) }
+
+            if (hasEvenValue) {
+                println("The map has even value(s)")
+            } else {
+                println("The map does not have even value(s)")
+            }
+        }
+        </code>
+        </pre>
+</div>
+
+<div id="simplefunction" class="groupy">
+    <h2>Simplest Function</h2>
+
+    <pre>
+        <code class="java">
+            fun main(args: Array<String>) {
+                println("Hello Wiafer!")
+                println("Hello My First Kotlin Program!")
+                println(20)
+            }
+        </code>
+    </pre>
+    <div class="note">
+        <p>
+            Different Between print and println
+        </p>
+    </div>
+</div>
